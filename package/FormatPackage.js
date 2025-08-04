@@ -1,0 +1,182 @@
+const crypto = require('crypto');
+const { create } = require('domain');
+const format = async (id) => {
+    const now = Date.now();
+    const interval = 10 * 1000; // 10 seconds interval
+    const id1 = crypto.randomUUID();
+    const id2 = crypto.randomUUID();
+    const id3 = crypto.randomUUID();
+    const setFormat = [{
+        id: id1,
+        parent_id: id,
+        title: "Listening",
+        code: null,
+        config: "E-TEFL.listening",
+        depth: 1,
+        description: null,
+        level: null,
+        duration: 0,
+        max_score: 0,
+        random_item: 0,
+        item_duration: 1,
+        note: null,
+        created_at: new Date(now + interval),
+        updated_at: new Date(now + interval),
+        is_encrypted: 0,
+        distribution_options: null,
+        is_toefl: null
+    }, {
+        id: crypto.randomUUID(),
+        parent_id: id1,
+        title: "PART A",
+        code: null,
+        config: "E-TEFL.listening.part-a",
+        depth: 2,
+        description: null,
+        level: null,
+        duration: 0,
+        max_score: 0,
+        random_item: 1,
+        item_duration: 1,
+        note: null,
+        created_at: new Date(now + 2 * interval),
+        updated_at: new Date(now + 2 * interval),
+        is_encrypted: 0,
+        distribution_options: null,
+        is_toefl: null
+    }, {
+        id: crypto.randomUUID(),
+        parent_id: id1,
+        title: "PART B",
+        code: null,
+        config: "E-TEFL.listening.part-b",
+        depth: 2,
+        description: null,
+        level: null,
+        duration: 0,
+        max_score: 0,
+        random_item: 1,
+        item_duration: 1,
+        note: null,
+        created_at: new Date(now + 3 * interval),
+        updated_at: new Date(now + 3 * interval),
+        is_encrypted: 0,
+        distribution_options: null,
+        is_toefl: null
+    }, {
+        id: crypto.randomUUID(),
+        parent_id: id1,
+        title: "PART C",
+        code: null,
+        config: "E-TEFL.listening.part-c",
+        depth: 2,
+        description: null,
+        level: null,
+        duration: 0,
+        max_score: 0,
+        random_item: 1,
+        item_duration: 1,
+        note: null,
+        created_at: new Date(now + 4 * interval),
+        updated_at: new Date(now + 4 * interval),
+        is_encrypted: 0,
+        distribution_options: null,
+        is_toefl: null
+    }, {
+        id: id2,
+        parent_id: id,
+        title: "Structure & Written Expression",
+        code: null,
+        config: "E-TEFL.grammar",
+        depth: 2,
+        description: null,
+        level: null,
+        duration: 1500,
+        max_score: 0,
+        random_item: 0,
+        item_duration: 0,
+        note: null,
+        created_at: new Date(now + 5 * interval),
+        updated_at: new Date(now + 5 * interval),
+        is_encrypted: 0,
+        distribution_options: null,
+        is_toefl: null
+    }, {
+        id: crypto.randomUUID(),
+        parent_id: id2,
+        title: "Structure",
+        code: null,
+        config: "E-TEFL.grammar.structure",
+        depth: 3,
+        description: null,
+        level: null,
+        duration: 0,
+        max_score: 0,
+        random_item: 1,
+        item_duration: 0,
+        note: null,
+        created_at: new Date(now + 6 * interval),
+        updated_at: new Date(now + 6 * interval),
+        is_encrypted: 0,
+        distribution_options: null,
+        is_toefl: null
+    }, {
+        id: crypto.randomUUID(),
+        parent_id: id2,
+        title: "Written Expression",
+        code: null,
+        config: "E-TEFL.grammar.written-expression",
+        depth: 3,
+        description: null,
+        level: null,
+        duration: 0,
+        max_score: 0,
+        random_item: 1,
+        item_duration: 0,
+        note: null,
+        created_at: new Date(now + 7 * interval),
+        updated_at: new Date(now + 7 * interval),
+        is_encrypted: 0,
+        distribution_options: null,
+        is_toefl: null
+    }, {
+        id: id3,
+        parent_id: id,
+        title: "Reading",
+        code: null,
+        config: "E-TEFL.reading",
+        depth: 3,
+        description: null,
+        level: null,
+        duration: 3300,
+        max_score: 0,
+        random_item: 1,
+        item_duration: 0,
+        note: null,
+        created_at: new Date(now + 8 * interval),
+        updated_at: new Date(now + 8 * interval),
+        is_encrypted: 0,
+        distribution_options: null,
+        is_toefl: null
+    }];
+    return setFormat;
+}
+
+const formatItemIntro = async ()=>{
+    const setIntro =
+    {
+        id: crypto.randomUUID(),
+        parent_id: null,
+        type: "multi_choice_single",
+        code: "INTRODUCTION",
+        content: "<p><strong>INTRO</strong><br>Disini anda bisa menuliskan intruksi, petunjuk, atau hal lain yang ingin disampaikan kepada peserta ujian</p>",
+        answer_order_random: 0,
+        duration: 0,
+        item_count: 0,
+        order: 0,
+        created_at: new Date(),
+        updated_at: new Date(),
+    }
+    return setIntro;
+}
+module.exports = { format , formatItemIntro};

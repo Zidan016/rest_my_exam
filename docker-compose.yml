@@ -1,0 +1,13 @@
+version: '3'
+services:
+  express:
+    image: node:18-alpine
+    container_name: express1-app
+    working_dir: /app
+    volumes:
+      - /DATA/SIMO-HOME/Zidan/exams1:/app
+    ports:
+      - "3000:3000"
+    command: sh -c "npm install && node app.js"
+
+
