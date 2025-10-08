@@ -15,6 +15,10 @@ const addItemCore = async (examsId) =>{
             return data;
         }))));
         const sectionId = section.map(sct=> sct.id);
+        if (!sectionId.length) {
+            console.warn("⚠️ Tidak ada section_id ditemukan untuk exam_id:", examsId);
+            return false;
+        }
         const [sectionItems] = await db.query(getSectionItems, [sectionId]);
         const itemAns = await itemsAnswer(sectionItems)
         const att = await attachments(sectionItems);
@@ -97,7 +101,6 @@ const attachments = async(sectionItems)=>{
     }
 }
 
-addItemCore('8eb30919-ecee-4627-a715-e786f0c8a611')
 
 function shuffle(array) {
     const arr = [...array];

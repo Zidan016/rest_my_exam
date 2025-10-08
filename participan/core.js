@@ -58,6 +58,4 @@ const addSection = async(examId)=>{
     }
 }
 
-addSection("1d0fb4d6-eda2-4460-9e74-2180c76a0efe")
-
 module.exports = {addOrUpdate}
